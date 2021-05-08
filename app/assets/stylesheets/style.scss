@@ -18,6 +18,31 @@ $purple: #7401df;
   height: 100vh;
 }
 
+.score-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 714px;
+  width: 100%;
+  margin: 0 auto;
+  color: $red;
+
+  div {
+    display: flex;
+    justify-content: center;
+    flex-basis: 33%;
+  }
+}
+
+button {
+  width: 80px;
+  height: 32px;
+  margin-top: 10px;
+  border: 1px solid $red;
+  border-radius: 28px;
+  color: $white;
+}
+
 .row {
   display: flex;
   justify-content: center;
@@ -27,9 +52,14 @@ $purple: #7401df;
 }
 
 .square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
   border: 1px solid $white;
+  font-size: 18px;
+  color: $pink;
 }
 
 .snake {
