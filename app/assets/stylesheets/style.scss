@@ -1,12 +1,39 @@
+$red: #ff0040;
+$white: #c4ffff;
+$pink: #fe00fe;
+$blue: #00b3fe;
+$purple: #7401df;
+
 * {
   margin: 0;
   padding: 0;
+  background-color: #000000;
 }
 
-.container {
+.grid {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.square {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $white;
+}
+
+.snake {
+  background-color: $blue;
+  border: 1px solid $blue;
+  border-radius: 8px;
 }
