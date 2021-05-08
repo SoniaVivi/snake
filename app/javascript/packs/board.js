@@ -32,7 +32,11 @@ const board = (() => {
         _createElem("div", `square`, rowElem, { x, y });
       }
     }
-    const startButton = _createElem("button", "start-button", "grid");
+    const startButton = _createElem(
+      "button",
+      "start-button",
+      "buttons-container"
+    );
     startButton.textContent = "Start!";
     return startButton;
   };

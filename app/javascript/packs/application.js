@@ -9,5 +9,6 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 
 Rails.start();
+global.Rails = Rails;
 Turbolinks.start();
 ActiveStorage.start();

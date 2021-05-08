@@ -1,4 +1,5 @@
 import board from "./board";
+import scoreController from "./scoreController";
 
 const game = (() => {
   let _initialRender = true;
@@ -13,6 +14,16 @@ const game = (() => {
     (_scoreElem.textContent = `${
       _scoreElem.textContent.split(" ")[0]
     } ${_size}`);
+  const _setHighScore = () => {
+    const highScoreElem = document.querySelector(".high-score-display");
+    const prevHighScore = localStorage.getItem("high-score");
+    if (prevHighScore && prevHighScore > _size) {
+      highScoreElem.textContent = `High Score: ${prevHighScore}`;
+    } else {
+      highScoreElem.textContent = `High Score: ${_size}`;
+      localStorage.setItem("high-score", _size);
+    }
+  };
   const _inBounds = (position) => position <= 16 && position >= 0;
   const _addSegment = () => {
     const moves = {
@@ -53,7 +64,10 @@ const game = (() => {
       _direction = keys[key.key];
     }
   };
-  const _endGame = () => (_ongoing = !_ongoing);
+  const _endGame = () => {
+    _ongoing = !_ongoing;
+    scoreController.newScore(_size);
+  };
   const _gameLoop = () => {
     if (!_ongoing) {
       return;
@@ -73,6 +87,7 @@ const game = (() => {
     } else if (_snake.length < _size) {
       board.addSnake(_addSegment());
     }
+    _setHighScore();
     window.setTimeout(() => _gameLoop(), 100);
   };
   const _restartGame = () => {
@@ -86,7 +101,7 @@ const game = (() => {
   };
   const _getStartButton = (elem) => {
     _startButton = elem;
-    document.addEventListener("mousedown", () => {
+    elem.addEventListener("mousedown", () => {
       if (!_firstGame) {
         _restartGame();
       }
@@ -96,6 +111,7 @@ const game = (() => {
 
   const render = () => {
     if (_initialRender) {
+      _setHighScore();
       _getStartButton(board.newGrid());
       _initialRender = false;
     }

@@ -2,15 +2,22 @@
   <%= javascript_pack_tag 'game', 'data-turbolinks-track': 'reload' %>
 <% end %>
 <div class="grid">
+  <div class="notifications">
+    <p class="notifications-text">
+    </p>
+  </div>
   <div class="score-container">
     <div class="high-score">
-      <h3>High Score: </h3>
+      <h3 class="high-score-display">High Score: 0</h3>
     </div>
     <div class="score">
-      <h3 class="score-display">Score: 0</h3>
+      <h3 class="score-display">Score: 1</h3>
     </div>
     <div class="top-score">
       <h3>Top Score: </h3>
     </div>
   </div>
+</div>
+<div class="buttons-container">
+  <input type="text" placeHolder="Player1" class="name">
 </div>
