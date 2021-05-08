@@ -1,38 +1,18 @@
-const board = (() => {
-  const _createElem = (
-    elemType,
-    className = "",
-    parent = null,
-    dataType = null
-  ) => {
-    const elem = document.createElement(elemType);
-    elem.classList.add(...className.split(" "));
-    if (dataType) {
-      for (const [name, value] of Object.entries(dataType)) {
-        elem.setAttribute(`data-${name}`, value);
-      }
-    }
-    if (typeof parent == "string") {
-      return document.querySelector(`.${parent}`).appendChild(elem);
-    } else if (typeof parent == "object") {
-      return parent.appendChild(elem);
-    } else {
-      return elem;
-    }
-  };
+import createElem from "./createElem";
 
+const board = (() => {
   const _selectSquare = (x, y) =>
     document.querySelector(`[data-x='${x}'][data-y='${y}']`);
   const random_integer = () => Math.floor(Math.random() * 17);
 
   const newGrid = () => {
     for (let y = 0; y < 17; y += 1) {
-      let rowElem = _createElem("div", `row ${y}`, "grid");
+      let rowElem = createElem("div", `row ${y}`, "grid");
       for (let x = 0; x < 17; x += 1) {
-        _createElem("div", `square`, rowElem, { x, y });
+        createElem("div", `square`, rowElem, { x, y });
       }
     }
-    const startButton = _createElem(
+    const startButton = createElem(
       "button",
       "start-button",
       "buttons-container"

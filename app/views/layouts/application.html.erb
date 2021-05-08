@@ -12,7 +12,17 @@
   </head>
 
   <body>
-    <div className="content">
+    <nav class="navbar">
+      <ul>
+        <li class="navbar-tab">
+          <a href="/">Game</a>
+        </li>
+        <li class="navbar-tab">
+          <a href="/highscores">High Scores</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
       <%= yield %>
     </div>
   </body>

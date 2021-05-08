@@ -1,5 +1,6 @@
 class ScoresController < ApplicationController
   def index
+    @scores = Score.all.order(points: :desc)
   end
   def create
     if Score.new(create_params).save
@@ -9,6 +10,7 @@ class ScoresController < ApplicationController
     end
   end
   def new
+    @top_score = Score.order(points: :desc).first.points
   end
 
   private

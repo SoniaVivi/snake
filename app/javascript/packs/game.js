@@ -1,5 +1,6 @@
 import board from "./board";
 import scoreController from "./scoreController";
+import countDownTimer from "./countDownTimer";
 
 const game = (() => {
   let _initialRender = true;
@@ -60,6 +61,9 @@ const game = (() => {
       ArrowLeft: "left",
       ArrowRight: "right",
     };
+    if (key.key in keys) {
+      key.preventDefault();
+    }
     if (!key.repeat && !_isInverseDirection(keys[key.key])) {
       _direction = keys[key.key];
     }
@@ -105,6 +109,7 @@ const game = (() => {
       if (!_firstGame) {
         _restartGame();
       }
+      countDownTimer.countDown();
       window.setTimeout(() => start(), 2000);
     });
   };

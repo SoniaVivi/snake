@@ -4,15 +4,53 @@ $pink: #fe00fe;
 $blue: #00b3fe;
 $purple: #7401df;
 
+$max-navbar-width: 714px;
+
 * {
   margin: 0;
   padding: 0;
   background-color: #000000;
   color: $purple;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  color: $white;
 }
 
 h3 {
   color: $red;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  max-width: 960px;
+  width: 100%;
+  height: 48px;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  max-width: $max-navbar-width;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $red;
+  border-radius: 5px;
+}
+
+.navbar-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  border-right: 1px solid $red;
 }
 
 .notifications {
@@ -33,7 +71,7 @@ h3 {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  height: 95vh;
 }
 
 .buttons-container {
@@ -71,7 +109,7 @@ h3 {
   align-items: center;
   max-width: 714px;
   width: 100%;
-  margin: 0 auto;
+  margin: 15px auto;
   color: $red;
 
   div {
@@ -104,4 +142,65 @@ h3 {
   background-color: $blue;
   border: 1px solid $blue;
   border-radius: 8px;
+}
+
+.score-board {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.score-record {
+  display: flex;
+  justify-content: space-between;
+  max-width: $max-navbar-width - 50px;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid $red;
+  border-top: unset;
+
+  span {
+    font-weight: 500;
+    color: $blue;
+  }
+
+  .record-holder:not(.label) {
+    margin-right: 50px;
+  }
+
+  .label {
+    margin-right: 15px;
+  }
+
+  &.label {
+    border-top: 1px solid $red;
+  }
+
+  &:first-child {
+    border-radius: 5px 5px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+.countdown-timer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  margin: auto auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  font-weight: 500;
+  color: $purple;
+  background-color: unset;
 }

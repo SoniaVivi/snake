@@ -4,7 +4,7 @@ const scoreController = (() => {
   const newScore = (points) => {
     const notificationsElem = document.querySelector(".notifications-text");
     const name = document.querySelector(".name").value;
-    sendAjaxRequest("POST", "/highscores", {
+    sendAjaxRequest("POST", "/", {
       name,
       points,
     })

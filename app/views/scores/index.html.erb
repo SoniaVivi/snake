@@ -1,0 +1,18 @@
+<ul class="score-board">
+    <li class="score-record label">
+      <span class="ranking">Ranking</span>
+      <div>
+        <span class="record-holder label">Name</span>
+        <span class="points">Points</span>
+      </div>
+    </li>
+  <% @scores.each_with_index do |score, i| %>
+    <li class="score-record">
+      <span class="ranking"><%= i + 1 %>.</span>
+      <div>
+        <span class="record-holder"><%= score.name %></span>
+        <span class="points"><%= score.points %></span>
+      </div>
+    </li>
+  <% end %>
+</ul>
