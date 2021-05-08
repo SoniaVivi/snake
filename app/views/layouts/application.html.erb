@@ -8,9 +8,22 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head) %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <ul>
+        <li class="navbar-tab">
+          <a href="/">Game</a>
+        </li>
+        <li class="navbar-tab">
+          <a href="/highscores">High Scores</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>
