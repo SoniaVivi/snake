@@ -15,16 +15,7 @@ const game = (() => {
     (_scoreElem.textContent = `${
       _scoreElem.textContent.split(" ")[0]
     } ${_size}`);
-  const _setHighScore = () => {
-    const highScoreElem = document.querySelector(".high-score-display");
-    const prevHighScore = localStorage.getItem("high-score");
-    if (prevHighScore && prevHighScore > _size) {
-      highScoreElem.textContent = `High Score: ${prevHighScore}`;
-    } else {
-      highScoreElem.textContent = `High Score: ${_size}`;
-      localStorage.setItem("high-score", _size);
-    }
-  };
+  const _setHighScore = () => scoreController.setPersonalBest(_size);
   const _inBounds = (position) => position <= 16 && position >= 0;
   const _addSegment = () => {
     const moves = {
@@ -71,11 +62,9 @@ const game = (() => {
   const _endGame = () => {
     _ongoing = !_ongoing;
     scoreController.newScore(_size);
+    _startButton.classList.remove("hidden");
   };
   const _gameLoop = () => {
-    if (!_ongoing) {
-      return;
-    }
     if (_snake.length == _size) {
       const newSegment = _addSegment();
       if (newSegment) {
@@ -92,7 +81,7 @@ const game = (() => {
       board.addSnake(_addSegment());
     }
     _setHighScore();
-    window.setTimeout(() => _gameLoop(), 100);
+    window.setTimeout(() => _ongoing && _gameLoop(), 100);
   };
   const _restartGame = () => {
     _size = 1;
@@ -104,11 +93,11 @@ const game = (() => {
     board.addSnake(_addSegment());
   };
   const _getStartButton = (elem) => {
-    _startButton = elem;
     elem.addEventListener("mousedown", () => {
       if (!_firstGame) {
         _restartGame();
       }
+      _startButton.classList.add("hidden");
       countDownTimer.countDown();
       window.setTimeout(() => start(), 2000);
     });
@@ -117,7 +106,8 @@ const game = (() => {
   const render = () => {
     if (_initialRender) {
       _setHighScore();
-      _getStartButton(board.newGrid());
+      _startButton = board.newGrid();
+      _getStartButton(_startButton);
       _initialRender = false;
     }
     board.addFood();

@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "scores_index" %>
+<% end %>
+
 <ul class="score-board">
     <li class="score-record label">
       <span class="ranking">Ranking</span>
@@ -7,7 +11,7 @@
       </div>
     </li>
   <% @scores.each_with_index do |score, i| %>
-    <li class="score-record">
+    <li class="score-record <%= (i% 2) == 0 ? " secondary-bottom-border" : "" %>" >
       <span class="ranking"><%= i + 1 %>.</span>
       <div>
         <span class="record-holder"><%= score.name %></span>

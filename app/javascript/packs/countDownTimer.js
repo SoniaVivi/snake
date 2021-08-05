@@ -6,7 +6,7 @@ const countDownTimer = (() => {
     timer = createElem(
       "span",
       "timer",
-      createElem("div", "countdown-timer timer", "content")
+      createElem("div", "countdown-timer timer", "container")
     );
     timer.textContent = 3;
   };

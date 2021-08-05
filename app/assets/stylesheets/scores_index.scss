@@ -1,0 +1,48 @@
+@import "_variables";
+
+.score-board {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+}
+
+.score-record {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid $primary-border;
+  border-top: unset;
+
+  span {
+    font-weight: 500;
+    color: $text;
+  }
+
+  .record-holder:not(.label) {
+    margin-right: 50px;
+  }
+
+  &.label {
+    border-top: 1px solid $primary-border;
+    border-radius: 5px 5px 0 0;
+
+    .label {
+      margin-right: 40px;
+    }
+  }
+
+  &:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+.secondary-bottom-border {
+  border-bottom: 1px dashed $primary-border;
+}
+
+.points {
+  display: inline-block;
+  width: 50px;
+}

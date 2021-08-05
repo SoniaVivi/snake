@@ -7,16 +7,11 @@ const board = (() => {
 
   const newGrid = () => {
     for (let y = 0; y < 17; y += 1) {
-      let rowElem = createElem("div", `row ${y}`, "grid");
       for (let x = 0; x < 17; x += 1) {
-        createElem("div", `square`, rowElem, { x, y });
+        createElem("div", `square`, "grid", { x, y });
       }
     }
-    const startButton = createElem(
-      "button",
-      "start-button",
-      "buttons-container"
-    );
+    const startButton = createElem("button", "start-button", "container");
     startButton.textContent = "Start!";
     return startButton;
   };
