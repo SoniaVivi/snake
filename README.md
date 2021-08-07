@@ -1,9 +1,18 @@
-# README
+# Snake
 
-Recreated version of the classic game Snake playable through a browser.
 
-Saves the high score locally and any new completions to the database
+![Screenshot from 2021-08-07 03-48-08](https://user-images.githubusercontent.com/55420399/128599957-9c058436-dd90-445e-b831-2471270d8031.png)
 
-Ruby 2.7.0
+Recreated version of the classic game Snake playable through a browser. Styled using "retro" colors and scanlines to help mimic the feel of an arcade machine.
 
-Rails 6.1.3
+**Installation**
+
+Clone the repository, then run 
+
+  ```bundle install
+
+rails db:create
+
+rails db:migrate
+```
+Run with `rails server`. 
