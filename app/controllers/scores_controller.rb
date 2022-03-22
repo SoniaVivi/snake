@@ -10,7 +10,7 @@ class ScoresController < ApplicationController
     end
   end
   def new
-    @top_score = Score.order(points: :desc).first.points
+    @top_score = Score.first ? Score.order(points: :desc).first.points : 0
   end
 
   private
